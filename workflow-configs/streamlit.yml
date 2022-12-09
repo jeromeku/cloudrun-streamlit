@@ -1,0 +1,45 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  annotations:
+    client.knative.dev/user-image: gcr.io/bitgo-research/githubactions-streamlit:e08df5a981f173b5128a89c6c5e122132576ce66
+    run.googleapis.com/client-name: gcloud
+    run.googleapis.com/client-version: 411.0.0
+    run.googleapis.com/ingress: all
+    run.googleapis.com/ingress-status: all
+    serving.knative.dev/creator: bitgo-100@bitgo-research.iam.gserviceaccount.com
+    serving.knative.dev/lastModifier: bitgo-100@bitgo-research.iam.gserviceaccount.com
+  creationTimestamp: '2022-12-09T01:05:22.669939Z'
+  generation: 1
+  labels:
+    cloud.googleapis.com/location: us-west1
+  name: githubactions-streamlit
+  namespace: '829676803221'
+  resourceVersion: AAXvWsJ5W+4
+  selfLink: /apis/serving.knative.dev/v1/namespaces/829676803221/services/githubactions-streamlit
+  uid: 3e85a4ca-7b57-4fc3-9d48-19aebcdb6af5
+spec:
+  template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/maxScale: '100'
+        client.knative.dev/user-image: gcr.io/bitgo-research/githubactions-streamlit:e08df5a981f173b5128a89c6c5e122132576ce66
+        run.googleapis.com/client-name: gcloud
+        run.googleapis.com/client-version: 411.0.0
+      name: githubactions-streamlit-00001-xuk
+    spec:
+      containerConcurrency: 80
+      containers:
+      - image: gcr.io/bitgo-research/githubactions-streamlit:e08df5a981f173b5128a89c6c5e122132576ce66
+        ports:
+        - containerPort: 8080
+          name: http1
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 512Mi
+      serviceAccountName: 829676803221-compute@developer.gserviceaccount.com
+      timeoutSeconds: 300
+  traffic:
+  - latestRevision: true
+    percent: 100
